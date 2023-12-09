@@ -20,16 +20,31 @@ app.get('/:param', function (req, res) {
   const name = req.params.param;
   const person = req.params.param;
 
-  const body = `
-<div style="text-align: center; height: 100%; color: #fbfbfb; font-family: 'Verdana'; background: rgb(131,58,180); background: linear-gradient(36deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);">
-  <div style="padding-top: 9%; font-size: 4.3em;">Heja ${name}!</div>
-  <div style="padding-top: 1.7em; font-size: 2.3em;">Twoim świątecznym losem jest:</div>
-  <div style="padding-top: .7em; font-size: 9em;">${person}</div>
-</div>`
-
   // Prints Output on the browser in response 
   res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' }); 
+
+  const head = `<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Demo Page</title>
+      <style>
+        html, body { padding: 0; margin: 0; }
+        .container { position: absolute; text-align: center; height: 100%; width: 100%; color: #fbfbfb; font-family: 'Verdana'; background: rgb(131,58,180); background: linear-gradient(36deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%); }
+      </style>
+    </head>
+    <body>`
+  res.write(head);
+
+  const body = 
+  `<div class="container">
+    <div style="padding-top: 9%; font-size: 4.3em;">Heja ${name}!</div>
+    <div style="padding-top: 1.7em; font-size: 2.3em;">Twoim świątecznym losem jest:</div>
+    <div style="padding-top: .7em; font-size: 9em;">${person}</div>
+  </div>`
   res.write(body, 'utf8');
+
+  res.write(`</body></html>`);
+
   res.end(); 
 });
 
