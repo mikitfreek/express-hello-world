@@ -14,12 +14,15 @@ app.use(function (req, res, next) {
 const head = `<!DOCTYPE html>
 <html>
   <head>
-    <title>Demo Page</title>
+    <title>Losowanko</title>
     <style>
       html, body { padding: 0; margin: 0; height: 100%; width: 100%; font-family: 'Verdana'; color: #fbfbfb;
         background: rgb(131,58,180); 
         background: linear-gradient(36deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%); }
       .container { position: absolute; width: 100%; text-align: center; }
+      .welcome { padding-top: 9%; font-size: 4.3em; }
+      .text { padding-top: 1.7em; font-size: 2.3em; }
+      .name { padding-top: .7em; font-size: 9em; }
     </style>
   </head>
   <body>`
@@ -95,18 +98,18 @@ app.get('/:param', function (req, res) {
 
     const body = 
     `<div class="container">
-      <div style="padding-top: 9%; font-size: 4.3em;">Heja ${name}!</div>
-      <div style="padding-top: 1.7em; font-size: 2.3em;">Twoim świątecznym losem jest:</div>
-      <div style="padding-top: .7em; font-size: 9em;">${person}</div>
+      <div class="welcome">Heja ${name}!</div>
+      <div class="text">Twoim świątecznym losem jest:</div>
+      <div class="name">${person}</div>
     </div>`
     res.write(body, 'utf8');
   }
   else {
     const body = `
     <div class="container">
-      <div style="padding-top: 9%; font-size: 4.3em;">mordo,</div>
-      <div style="padding-top: 1.7em; font-size: 2.3em;">coś źle link spasował</div>
-      <div style="padding-top: .7em; font-size: 9em;">BO NIE DZIAŁA</div>
+      <div class="welcome">mordo,</div>
+      <div class="text">coś źle link spasował</div>
+      <div class="name">BO NIE DZIAŁA</div>
     </div>`
     
     res.write(body, 'utf8');
@@ -137,9 +140,9 @@ app.use('*', (req,res) => {
 
   const body = `
   <div class="container">
-    <div style="padding-top: 9%; font-size: 4.3em;">Losowanko</div>
-    <div style="padding-top: 1.7em; font-size: 2.3em;">wpisz swój kod po ukośniku w adresie strony</div>
-    <div style="padding-top: .7em; font-size: 9em;">i co.. komu sprawisz radość?</div>
+    <div class="welcome">Losowanko</div>
+    <div class="text">wpisz swój kod po ukośniku w adresie strony</div>
+    <div class="name">i co.. komu sprawisz radość?</div>
   </div>`
   
 
